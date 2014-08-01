@@ -4,5 +4,10 @@
     <string name="app_name">SVTask5</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-
+	
+    <string name="connection">Connetcting...</string>
+    <string name="loading_contacts">Retrieving contact list</string>
+    <string name="loading_full_info">Retrieving full contact information</string>
+	<string name="no_available_contacts">No more available contacts</string>
+    
 </resources>
