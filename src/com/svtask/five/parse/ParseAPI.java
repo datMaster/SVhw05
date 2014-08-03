@@ -5,17 +5,21 @@ import java.util.List;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.parse.FindCallback;
 import com.parse.GetCallback;
+import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseException;
 import com.svtask.five.Constants;
 import com.svtask.five.R;
 import com.svtask.five.adapters.ContactListAdapter;
+import com.svtask.five.holders.NewContactHolder;
 
 public class ParseAPI {		
 	
@@ -84,6 +88,26 @@ public class ParseAPI {
 		    }
 		  }
 		});
+	}
+	
+	public static void saveNewItem(NewContactHolder newContact) {
+		ParseObject parseNewContact = new ParseObject(Constants.PARSE_TABLE_NAME);
+		parseNewContact.put(Constants.PARSE_FIRST_NAME_COL, newContact.fName.getText().toString());
+		parseNewContact.put(Constants.PARSE_TEL_COL, newContact.tel.getText().toString());
+		initUploadFields(parseNewContact, newContact.sName, Constants.PARSE_SECOND_NAME_COL);
+		initUploadFields(parseNewContact, newContact.email, Constants.PARSE_EMAIL_COL);
+		if(newContact.imageData != null) {
+			ParseFile file = new ParseFile("avatar.jpg", newContact.imageData);
+			parseNewContact.put(Constants.PARSE_PHOTO_COL, file);
+		}		
+		parseNewContact.saveInBackground();
+		Toast.makeText(activity, "New contact created.", Toast.LENGTH_LONG).show();
+	}
+	
+	private static void initUploadFields(ParseObject parseObject, EditText editTextObject, String key) {
+		if(!editTextObject.getText().toString().equals("")){
+			parseObject.put(key, editTextObject.getText().toString());
+		}
 	}
 	
 	public static void showProgressDialog(int select) {		

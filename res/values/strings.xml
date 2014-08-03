@@ -4,14 +4,22 @@
     <string name="app_name">SVTask5</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-	
     <string name="connection">Connetcting...</string>
     <string name="loading_contacts">Retrieving contact list</string>
     <string name="loading_full_info">Retrieving full contact information</string>
-	<string name="no_available_contacts">No more available contacts</string>
-	<string name="loading_error">Error while retrieving contacts</string>
+    <string name="no_available_contacts">No more available contacts</string>
+    <string name="loading_error">Error while retrieving contacts</string>
     <string name="loading_error_full_contact">Error while retrieving full contact information</string>
     <string name="email_label">Email:</string>
     <string name="email_test">test@gmail.com</string>
     <string name="loading_more">Loading more contacts...</string>
+    <string name="title_activity_add_contact">AddContactActivity</string>
+    <string name="add_contact">Add contact</string>
+    
+    <string name="first_name">First name</string>
+    <string name="second_name">Second name</string>
+    <string name="email">Email</string>
+    <string name="telephon">Tel. number</string>
+    <string name="photo">Photo</string>    
+
 </resources>

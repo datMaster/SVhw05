@@ -4,6 +4,7 @@ import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.svtask.five.R;
 import com.svtask.five.parse.Contact;
+import com.svtask.five.utils.ByteToBitmap;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -65,18 +66,12 @@ public class FullInfoDialog implements OnClickListener{
 		}
 	}
 	
-	private void setImage(ParseFile data) {
-		byte[] imageData = null;
+	private void setImage(ParseFile data) {		
 		try {
-			imageData = data.getData();
-			BitmapFactory.Options options = new BitmapFactory.Options();
-			options.inSampleSize = 1;
-			Bitmap bitmap = BitmapFactory.decodeByteArray(imageData, 0, imageData.length, options);
-			image.setImageBitmap(bitmap);
-		} 
-		catch (ParseException e) {
+			image.setImageBitmap(ByteToBitmap.getBitmap(data.getData()));
+		} catch (ParseException e) {
 			e.printStackTrace();
-		}
+		}		
 	}
 	
 	public void show() {

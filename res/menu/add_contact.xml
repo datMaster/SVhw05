@@ -1,13 +1,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.svtask.five.MainActivity" >
+    tools:context="com.svtask.five.AddContactActivity" >
 
     <item
-        android:id="@+id/add_contact"
+        android:id="@+id/action_settings"
         android:orderInCategory="100"
-        android:title="@string/add_contact"
-        android:icon="@android:drawable/ic_input_add"
-        app:showAsAction="always"/>
+        android:title="@string/action_settings"
+        app:showAsAction="never"/>
 
 </menu>
