@@ -9,5 +9,9 @@
     <string name="loading_contacts">Retrieving contact list</string>
     <string name="loading_full_info">Retrieving full contact information</string>
 	<string name="no_available_contacts">No more available contacts</string>
-    
+	<string name="loading_error">Error while retrieving contacts</string>
+    <string name="loading_error_full_contact">Error while retrieving full contact information</string>
+    <string name="email_label">Email:</string>
+    <string name="email_test">test@gmail.com</string>
+    <string name="loading_more">Loading more contacts...</string>
 </resources>

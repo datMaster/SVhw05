@@ -2,14 +2,19 @@ package com.svtask.five.adapters;
 
 import java.util.ArrayList;
 
+import com.parse.ParseObject;
 import com.svtask.five.Constants;
 import com.svtask.five.R;
+import com.svtask.five.dialogs.FullInfoDialog;
 import com.svtask.five.holders.ContactHolder;
 import com.svtask.five.parse.Contact;
 import com.svtask.five.parse.ParseAPI;
 
+import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
+import android.os.Build;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
 import android.view.LayoutInflater;
@@ -32,11 +37,10 @@ implements OnClickListener, OnRefreshListener, OnScrollListener{
 	private ArrayList<Contact> contactsList;
 	private ArrayList<ContactHolder> contactHolderList;
 	private SwipeRefreshLayout swipeLayout;
-	private ListView listView;
-	private View footerView;
+	private ListView listView;	
 	private boolean loadingMore = false;
-	private int totalCount = 0; 
-	
+	private int lastVisibleItem = 0; 	
+
 	public ContactListAdapter(Activity activity, ArrayList<Contact> contacts) {
 		this.activity = activity;
 		this.contactsList = contacts;
@@ -51,11 +55,9 @@ implements OnClickListener, OnRefreshListener, OnScrollListener{
                 android.R.color.holo_green_light, 
                 android.R.color.white, 
                 android.R.color.holo_green_light);
-        
-      
-        footerView = ((LayoutInflater)this.activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.footer, null, false);         
+                              
         listView = (ListView) this.activity.getWindow().getDecorView().findViewById(R.id.listView_names); 
-        listView.setOnScrollListener(this);
+        listView.setOnScrollListener(this); 
         updateHolderList();
 	}
 	
@@ -98,14 +100,13 @@ implements OnClickListener, OnRefreshListener, OnScrollListener{
 		for(int i = 0; i < count; i ++) {
 			ContactHolder newContactHolder = new ContactHolder();
 			contactHolderList.add(newContactHolder);
-		}
-		totalCount = contactHolderList.size();
+		}		
 	}
 
 	@Override
 	public void onClick(View v) {
 		int position = Integer.parseInt(v.getTag().toString());
-		Toast.makeText(activity, contactHolderList.get(position).fName.getText(), Toast.LENGTH_LONG).show();		
+		ParseAPI.getFullContactInfo(contactsList.get(position), this);		
 	}
 	
 	public void addNewItems(ArrayList<Contact> newContacts) {
@@ -121,8 +122,8 @@ implements OnClickListener, OnRefreshListener, OnScrollListener{
 		}
 		else {
 			addNewItems(newContacts);
-			loadingMore = false;
-			listView.removeFooterView(footerView);
+			loadingMore = false;	
+			ParseAPI.dismissProgressDialog();
 		}		
 		updateHolderList();		
 		notifyDataSetChanged();		
@@ -136,19 +137,30 @@ implements OnClickListener, OnRefreshListener, OnScrollListener{
 	}
 
 	@Override
-	public void onScrollStateChanged(AbsListView view, int scrollState) {
-		// TODO Auto-generated method stub
-		
+	public void onScrollStateChanged(AbsListView view, int scrollState) {			
 	}
 
 	@Override
 	public void onScroll(AbsListView view, int firstVisibleItem,
 			int visibleItemCount, int totalItemCount) {
 		int lastInScreen = firstVisibleItem + visibleItemCount;
-		if(((lastInScreen % Constants.PARSE_LOAD_LIMIT) == 0) && (loadingMore == false)) {
-			listView.addFooterView(footerView);
-			ParseAPI.loadContacts(contactsList.size(), null, this);
-			loadingMore = true;
+		
+		if((lastInScreen == totalItemCount) && !loadingMore && (lastInScreen > 0)) {
+			if(listView.getId() == view.getId()) {
+				final int currentFirstVisibleItem = listView.getFirstVisiblePosition();
+				if (currentFirstVisibleItem > lastVisibleItem) {
+					ParseAPI.showProgressDialog(Constants.PROGRESS_LOAD_MORE);
+					ParseAPI.loadContacts(contactsList.size(), listView, this);
+					loadingMore = true;
+				}
+				lastVisibleItem = currentFirstVisibleItem;
+			}						
 		}
-	}	
+	}
+	
+	public void showFullContactInfo(Contact fullContact) {
+		FullInfoDialog dialog = new FullInfoDialog(activity);
+		dialog.showContactInfo(fullContact);
+		dialog.show();
+	}
 }

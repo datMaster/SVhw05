@@ -1,5 +1,8 @@
-package com.svtask.five;
+package com.svtask.five.fragments;
 
+import com.svtask.five.R;
+import com.svtask.five.R.id;
+import com.svtask.five.R.layout;
 import com.svtask.five.parse.ParseAPI;
 
 import android.support.v4.app.Fragment;

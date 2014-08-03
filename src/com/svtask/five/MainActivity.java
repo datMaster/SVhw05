@@ -4,8 +4,10 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+
 import com.parse.Parse;
 import com.parse.ParseAnalytics;
+import com.svtask.five.fragments.MainActivityPlaceHolder;
 
 public class MainActivity extends ActionBarActivity {
 
