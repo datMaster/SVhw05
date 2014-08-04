@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.RandomAccessFile;
 
 import com.svtask.five.R;
-import com.svtask.five.holders.ContactHolder;
 import com.svtask.five.holders.NewContactHolder;
 import com.svtask.five.parse.ParseAPI;
 import com.svtask.five.utils.ByteToBitmap;
@@ -26,8 +25,7 @@ public class NewContact implements OnClickListener, OpenDialogListener{
 	
 	private Activity activity;
 	private View rootView;
-	private NewContactHolder newContactHolder;
-	private ContactHolder contactHolder;	
+	private NewContactHolder newContactHolder;	
 	
 	public NewContact(Activity activity, View rootView) {
 		this.activity = activity;
@@ -51,9 +49,10 @@ public class NewContact implements OnClickListener, OpenDialogListener{
 	
 	private void saveToParse() {
 		if(newContactHolder.fName.getText().toString().equals("") || newContactHolder.tel.getText().toString().equals(""))
-			Toast.makeText(activity, "You are not fill all required fields!", Toast.LENGTH_LONG).show();
+			Toast.makeText(activity, activity.getString(R.string.required), Toast.LENGTH_LONG).show();
 		else {
 			ParseAPI.saveNewItem(newContactHolder);
+			activity.finish();
 		}
 	}
 	

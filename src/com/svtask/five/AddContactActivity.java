@@ -1,6 +1,7 @@
 package com.svtask.five;
 
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,6 +18,12 @@ public class AddContactActivity extends ActionBarActivity {
 			getSupportFragmentManager().beginTransaction()
 					.add(R.id.container, new AddActivityFragment()).commit();
 		}
+		
+		ActionBar abar = getSupportActionBar();
+		abar.setDisplayHomeAsUpEnabled(true);
+		abar.setDisplayShowHomeEnabled(false);
+		abar.setDisplayShowTitleEnabled(true);	
+		abar.setDisplayUseLogoEnabled(false);	
 	}
 
 	@Override
@@ -27,15 +34,9 @@ public class AddContactActivity extends ActionBarActivity {
 	}
 
 	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
+	public boolean onOptionsItemSelected(MenuItem item) {		
+		finish();
+		return true;
 	}
 
 }

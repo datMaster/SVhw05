@@ -101,7 +101,7 @@ public class ParseAPI {
 			parseNewContact.put(Constants.PARSE_PHOTO_COL, file);
 		}		
 		parseNewContact.saveInBackground();
-		Toast.makeText(activity, "New contact created.", Toast.LENGTH_LONG).show();
+		Toast.makeText(activity, activity.getString(R.string.new_contact), Toast.LENGTH_LONG).show();
 	}
 	
 	private static void initUploadFields(ParseObject parseObject, EditText editTextObject, String key) {

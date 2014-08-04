@@ -26,7 +26,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPersonName" >
+            android:inputType="textCapWords|textPersonName" >
 
             <requestFocus />
         </EditText>
@@ -42,7 +42,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPersonName" />
+            android:inputType="textCapWords|textPersonName" />
 
         <TextView
             android:id="@+id/textView3"
@@ -56,7 +56,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPersonName" />
+            android:inputType="phone" />
 
         <TextView
             android:id="@+id/textView4"
@@ -69,7 +69,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPersonName" />
+            android:inputType="textEmailAddress" />
 
         <TextView
             android:id="@+id/textView5"
@@ -77,17 +77,26 @@
             android:layout_height="wrap_content"
             android:text="@string/photo" />
 
-        <ImageButton
-            android:id="@+id/imageButton_add"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@android:drawable/ic_menu_crop" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp" >
 
-        <ImageView
-            android:id="@+id/imageView_image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/abc_ab_stacked_solid_dark_holo" />
+            <ImageView
+                android:id="@+id/imageView_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_weight="1"
+                android:src="@drawable/contact" />
+
+            <ImageButton
+                android:id="@+id/imageButton_add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:src="@android:drawable/ic_menu_crop" />
+
+        </LinearLayout>
 
         <Button
             android:id="@+id/button_save"

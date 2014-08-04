@@ -15,11 +15,12 @@
     <string name="loading_more">Loading more contacts...</string>
     <string name="title_activity_add_contact">AddContactActivity</string>
     <string name="add_contact">Add contact</string>
-    
     <string name="first_name">First name</string>
     <string name="second_name">Second name</string>
     <string name="email">Email</string>
     <string name="telephon">Tel. number</string>
-    <string name="photo">Photo</string>    
-
+    <string name="photo">Photo</string>
+    <string name="new_contact">New contact was created</string>
+    <string name="required">You are not fill all required fields!</string>
+	<string name="new_contact_activity_title">New contact</string>
 </resources>

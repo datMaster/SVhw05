@@ -12,7 +12,6 @@ import android.view.ViewGroup;
 public class AddActivityFragment extends Fragment{
 	
 	public AddActivityFragment() {
-		// TODO Auto-generated constructor stub
 	}
 	
 	@Override
