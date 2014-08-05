@@ -7,15 +7,14 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.parse.FindCallback;
 import com.parse.GetCallback;
+import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
-import com.parse.ParseException;
 import com.svtask.five.Constants;
 import com.svtask.five.R;
 import com.svtask.five.adapters.ContactListAdapter;
@@ -64,7 +63,7 @@ public class ParseAPI {
 		        else {		        	
 		        	dismissProgressDialog();
 		        	Toast.makeText(activity, activity.getString(R.string.loading_error), 
-		        			Toast.LENGTH_LONG).show();
+		        			Toast.LENGTH_LONG).show();		        	
 		        }
 		    }
 		});	
@@ -132,5 +131,5 @@ public class ParseAPI {
 	
 	public static void dismissProgressDialog() {
 		progressDialog.dismiss();
-	}
+	}		
 }

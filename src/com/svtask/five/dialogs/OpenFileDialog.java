@@ -1,4 +1,4 @@
-package com.svtask.five.utils;
+package com.svtask.five.dialogs;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;

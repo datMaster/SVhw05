@@ -2,19 +2,10 @@ package com.svtask.five.adapters;
 
 import java.util.ArrayList;
 
-import com.parse.ParseObject;
-import com.svtask.five.Constants;
-import com.svtask.five.R;
-import com.svtask.five.dialogs.FullInfoDialog;
-import com.svtask.five.holders.ContactHolder;
-import com.svtask.five.parse.Contact;
-import com.svtask.five.parse.ParseAPI;
-
-import android.annotation.SuppressLint;
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
-import android.os.Build;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
 import android.view.LayoutInflater;
@@ -24,10 +15,17 @@ import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.BaseAdapter;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.svtask.five.Constants;
+import com.svtask.five.R;
+import com.svtask.five.dialogs.FullInfoDialog;
+import com.svtask.five.holders.ContactHolder;
+import com.svtask.five.parse.Contact;
+import com.svtask.five.parse.ParseAPI;
 
 public class ContactListAdapter extends BaseAdapter 
 implements OnClickListener, OnRefreshListener, OnScrollListener{
@@ -84,14 +82,17 @@ implements OnClickListener, OnRefreshListener, OnScrollListener{
 		holder.fName = (TextView)convertView.findViewById(R.id.textView_fname);
 		holder.sName = (TextView)convertView.findViewById(R.id.textView_sname);
 		holder.tel = (TextView)convertView.findViewById(R.id.textView_tel);
+		holder.callButton = (ImageButton)convertView.findViewById(R.id.imageButton_call);
 		
 		holder.fName.setText(contactsList.get(position).getfName());
 		holder.sName.setText(contactsList.get(position).getsName());
 		holder.tel.setText(contactsList.get(position).getTel());
 		
-		holder.layout = (LinearLayout)convertView.findViewById(R.id.linearLayout_contact);
+		holder.layout = (LinearLayout)convertView.findViewById(R.id.linearLayout_contact_inf);
 		holder.layout.setTag(position);
 		holder.layout.setOnClickListener(this);
+		holder.callButton.setOnClickListener(this);
+		holder.callButton.setTag(position);
 		return convertView;
 	}
 	
@@ -106,7 +107,22 @@ implements OnClickListener, OnRefreshListener, OnScrollListener{
 	@Override
 	public void onClick(View v) {
 		int position = Integer.parseInt(v.getTag().toString());
-		ParseAPI.getFullContactInfo(contactsList.get(position), this);		
+		switch (v.getId()) {
+		case R.id.imageButton_call:
+			dialNumber(position);
+			break;
+
+		case R.id.linearLayout_contact_inf:
+			ParseAPI.getFullContactInfo(contactsList.get(position), this);
+			break;
+		}			
+	}
+	
+	private void dialNumber(int id) {
+		String number = contactsList.get(id).getTel();
+	    Intent intent = new Intent(Intent.ACTION_DIAL);
+	    intent.setData(Uri.parse("tel:" +number));
+	    activity.startActivity(intent);
 	}
 	
 	public void addNewItems(ArrayList<Contact> newContacts) {

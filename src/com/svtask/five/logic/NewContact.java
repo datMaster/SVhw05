@@ -5,11 +5,11 @@ import java.io.IOException;
 import java.io.RandomAccessFile;
 
 import com.svtask.five.R;
+import com.svtask.five.dialogs.OpenFileDialog;
+import com.svtask.five.dialogs.OpenFileDialog.OpenDialogListener;
 import com.svtask.five.holders.NewContactHolder;
 import com.svtask.five.parse.ParseAPI;
 import com.svtask.five.utils.ByteToBitmap;
-import com.svtask.five.utils.OpenFileDialog;
-import com.svtask.five.utils.OpenFileDialog.OpenDialogListener;
 
 import android.app.Activity;
 import android.view.View;

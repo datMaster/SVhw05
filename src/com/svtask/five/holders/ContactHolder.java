@@ -1,5 +1,6 @@
 package com.svtask.five.holders;
 
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -11,4 +12,5 @@ public class ContactHolder {
 	public TextView email;
 	public ImageView iamge;
 	public LinearLayout layout;
+	public ImageButton callButton;
 }

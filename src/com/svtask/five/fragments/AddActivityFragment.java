@@ -9,7 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class AddActivityFragment extends Fragment{
+public class AddActivityFragment extends Fragment {
 	
 	public AddActivityFragment() {
 	}

@@ -14,6 +14,9 @@ public class Constants {
 	public static final int PROGRESS_CONTACT_LIST = 1;
 	public static final int PROGRESS_FULL_CONTACT_INFO = 2;
 	public static final int PROGRESS_LOAD_MORE = 3;
-	public static final int PARSE_RECORDS_FROM_BEGIN = 0;	
+	public static final int PARSE_RECORDS_FROM_BEGIN = 0;
+	
+	public static final int TURN_ON_WIFI = 0;
+	public static final int REFRESH = 1;
 		
 }

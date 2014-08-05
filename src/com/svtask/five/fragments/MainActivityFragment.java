@@ -8,10 +8,9 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.svtask.five.R;
-import com.svtask.five.parse.ParseAPI;
+import com.svtask.five.utils.CheckWifi;
 
-public class MainActivityFragment extends Fragment {
-
+public class MainActivityFragment extends Fragment {	
 	public MainActivityFragment() {
 	
 	}
@@ -19,12 +18,14 @@ public class MainActivityFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
+		
 		View rootView = inflater.inflate(R.layout.fragment_main, container,
 				false);
 		
-		ListView listView = (ListView)rootView.findViewById(R.id.listView_names);
-		ParseAPI parseApi = new ParseAPI(getActivity());
-		parseApi.getContacts(listView);			
+		ListView listView = (ListView)rootView.findViewById(R.id.listView_names);			
+		CheckWifi checkWifi = new CheckWifi(getActivity(), listView);		
+		checkWifi.checkWifiState();
+		
 		return rootView;
-	}
+	}	
 }
