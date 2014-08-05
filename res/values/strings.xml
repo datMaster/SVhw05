@@ -22,12 +22,17 @@
     <string name="photo">Photo</string>
     <string name="new_contact">New contact was created</string>
     <string name="required">You are not fill all required fields!</string>
-	<string name="new_contact_activity_title">New contact</string>
-	<string name="continue_button">Continue</string>
-	
-	<string name="update">Update informationn</string>
-	<string name="refresh">Refresh program?</string>
-	
-	<string name="network_info">Network information</string>
-	<string name="network">Network is unavailable. Turn on WIFI.</string>	
+    <string name="new_contact_activity_title">New contact</string>
+    <string name="continue_button">Continue</string>
+    <string name="update">Update informationn</string>
+    <string name="refresh">Refresh program?</string>
+    <string name="network_info">Network information</string>
+    <string name="network">Network is unavailable. Turn on WIFI.</string>
+    <string name="title_facebook_login">FB login</string>
+    <string name="title_activity_profile">ProfileActivity</string>
+    <string name="profile_menu">Profile</string>
+    <string name="button_logout">Logout</string>
+    <string name="facebook_id">310602182434992</string>
+    <string name="profile">User profile</string>
+
 </resources>
