@@ -1,16 +1,12 @@
 package com.svtask.five;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
 
-import com.svtask.five.utils.FacebookWorker;
+import com.svtask.five.fragments.ProfileFragment;
 
 public class ProfileActivity extends ActionBarActivity {
 
@@ -20,7 +16,7 @@ public class ProfileActivity extends ActionBarActivity {
 		setContentView(R.layout.activity_profile);
 		if (savedInstanceState == null) {
 			getSupportFragmentManager().beginTransaction()
-					.add(R.id.container, new PlaceholderFragment()).commit();
+					.add(R.id.container, new ProfileFragment()).commit();
 		}
 		ActionBar abar = getSupportActionBar();
 		abar.setDisplayHomeAsUpEnabled(true);
@@ -40,25 +36,5 @@ public class ProfileActivity extends ActionBarActivity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		finish();
 		return true;
-	}
-
-	/**
-	 * A placeholder fragment containing a simple view.
-	 */
-	public static class PlaceholderFragment extends Fragment {		
-		
-		public PlaceholderFragment() {
-		}
-
-		@Override
-		public View onCreateView(LayoutInflater inflater, ViewGroup container,
-				Bundle savedInstanceState) {
-			View rootView = inflater.inflate(R.layout.fragment_profile,
-					container, false);
-			
-			new FacebookWorker(getActivity(), rootView);
-			
-			return rootView;
-		}
 	}
 }

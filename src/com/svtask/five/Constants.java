@@ -18,5 +18,7 @@ public class Constants {
 	
 	public static final int TURN_ON_WIFI = 0;
 	public static final int REFRESH = 1;
+	
+	public static final int LOGOUT = 15;
 		
 }

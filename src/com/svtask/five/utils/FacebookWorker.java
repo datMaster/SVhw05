@@ -8,6 +8,7 @@ import com.parse.ParseFacebookUtils;
 import com.parse.ParseUser;
 import com.svtask.five.MainActivity;
 import com.svtask.five.R;
+import com.svtask.five.Constants;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -78,7 +79,7 @@ public class FacebookWorker implements OnClickListener {
 	@Override
 	public void onClick(View v) {
 		ParseUser.getCurrentUser().logOut();
-		activity.startActivity(new Intent(activity, MainActivity.class));
+		activity.setResult(Constants.LOGOUT);
 		activity.finish();
 	}
 
